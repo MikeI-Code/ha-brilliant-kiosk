@@ -3,7 +3,23 @@
 Manage [Brilliant](https://www.brilliant.tech/) smart-home panels that run the
 [brilliant-ha-kiosk](https://github.com/MikeI-Code/brilliant-ha-kiosk) Home Assistant kiosk:
 install, update and roll back the kiosk, watch its health, change its settings and read its
-logs from Home Assistant. Integration version 0.2.0.
+logs from Home Assistant. Integration version 0.2.1.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/MikeI-Code/brilliant-ha-kiosk/main/docs/images/home.png" width="19%" alt="Home tab: clock, weather, forecast, scenes and lights">
+  <img src="https://raw.githubusercontent.com/MikeI-Code/brilliant-ha-kiosk/main/docs/images/lights.png" width="19%" alt="Lights tab">
+  <img src="https://raw.githubusercontent.com/MikeI-Code/brilliant-ha-kiosk/main/docs/images/climate.png" width="19%" alt="Climate tab with thermostats">
+  <img src="https://raw.githubusercontent.com/MikeI-Code/brilliant-ha-kiosk/main/docs/images/sonos.png" width="19%" alt="Music tab with transport, volume and grouping">
+  <img src="https://raw.githubusercontent.com/MikeI-Code/brilliant-ha-kiosk/main/docs/images/house.png" width="19%" alt="House tab with presence, appliances and temperatures">
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/MikeI-Code/brilliant-ha-kiosk/main/docs/images/security.png" width="19%" alt="Security tab: Ring alarm, Schlage lock, doorbells and cameras">
+  <img src="https://raw.githubusercontent.com/MikeI-Code/brilliant-ha-kiosk/main/docs/images/capture.png" width="19%" alt="Capture tab: voice clip, snapshot and video clip">
+  <img src="https://raw.githubusercontent.com/MikeI-Code/brilliant-ha-kiosk/main/docs/images/saver.jpg" width="19%" alt="Screensaver with clock and local weather">
+  <img src="https://raw.githubusercontent.com/MikeI-Code/brilliant-ha-kiosk/main/docs/images/dim.png" width="19%" alt="Two-finger dimming with a live percentage readout">
+</p>
+<p align="center"><sub>The kiosk this integration manages, on Brilliant panels. Second row: Security (camera pictures blanked), Capture, the screensaver, and two-finger dimming.</sub></p>
+
 
 The panel's everyday entities (wired light, motion, display state, screensaver and night
 switches, gestures) are published by the kiosk itself over MQTT. This integration is the admin
