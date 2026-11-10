@@ -15,17 +15,17 @@
 </p>
 <p align="center"><sub>The kiosk this integration manages, on Brilliant panels. Second row: Security (camera pictures blanked), Capture, the screensaver, and two-finger dimming.</sub></p>
 
-> This repository distributes the integration for Home Assistant's Marketplace and HACS. Its code, tests and issues live in [brilliant-ha-kiosk](https://github.com/MikeI-Code/brilliant-ha-kiosk); the kiosk itself is documented in the [manual](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/nightly/docs/MANUAL.md). If it is useful to you, please star [the main repository](https://github.com/MikeI-Code/brilliant-ha-kiosk).
+> This repository distributes the integration for Home Assistant's Marketplace and HACS. Its code, tests and issues live in [brilliant-ha-kiosk](https://github.com/MikeI-Code/brilliant-ha-kiosk); the kiosk itself is documented in the [manual](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/main/docs/MANUAL.md). If it is useful to you, please star [the main repository](https://github.com/MikeI-Code/brilliant-ha-kiosk).
 
 The **Brilliant Kiosk** integration (`brilliant_kiosk`) manages Brilliant panels that run this
 project's kiosk from Home Assistant: it shows their health, edits their settings, restarts their
 services, reads their logs and installs kiosk updates. It is a custom integration (installed from the Marketplace or HACS, see
 [Installation](#installation)), one
 config entry per panel, and it talks to the panel over SSH with the typed library
-[`pybrilliantkiosk`](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/nightly/lib/pybrilliantkiosk/README.md).
+[`pybrilliantkiosk`](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/main/lib/pybrilliantkiosk/README.md).
 
 The panel's *entities* (the wired light, motion, screensaver switches, sensors) are published by
-the kiosk itself over MQTT discovery ([manual, section 2.7](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/nightly/docs/MANUAL.md#27-connect-the-panels-to-home-assistant-over-mqtt-optional)): wired light, motion, display state, screensaver and night
+the kiosk itself over MQTT discovery ([manual, section 2.7](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/main/docs/MANUAL.md#27-connect-the-panels-to-home-assistant-over-mqtt-optional)): wired light, motion, display state, screensaver and night
 switches, gestures, voice, intercom, capture, security. This integration adds the management side and links its
 device to the MQTT device (`via_device`), so both appear together.
 
@@ -63,7 +63,7 @@ administrators only.
 
 ## Installation
 
-You need a panel that already has SSH switched on (see the [manual, section 2.1](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/nightly/docs/MANUAL.md#21-turn-on-ssh-on-the-panel)) and
+You need a panel that already has SSH switched on (see the [manual, section 2.1](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/main/docs/MANUAL.md#21-turn-on-ssh-on-the-panel)) and
 Home Assistant **2026.3.1 or newer** (the first release that shows an integration's own
 `brand/` images and the version the tests run against).
 
@@ -127,7 +127,7 @@ Brilliant kiosk*), or *Brilliant kiosk \<host\>* when Brilliant has no room name
    **Delete**. This removes the panel's device and entities and any repair issues of that panel.
 2. The kiosk on the panel is **not** removed: deleting the entry only stops Home Assistant managing
    it. To remove the kiosk too, run the **Uninstall** (`ha-kiosk-setup uninstall` or
-   `scripts/uninstall.sh`, see the [manual, section 8](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/nightly/docs/MANUAL.md#8-maintenance)) before or after.
+   `scripts/uninstall.sh`, see the [manual, section 8](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/main/docs/MANUAL.md#8-maintenance)) before or after.
 3. Marketplace or HACS installs: remove the integration there and restart Home Assistant. Manual
    installs: delete `custom_components/brilliant_kiosk/`.
 
@@ -212,7 +212,7 @@ download). It is not independent of GitHub at that moment, but after it someone 
 a release on GitHub could replace its `.sha256` file too, and still not the table you installed
 with the integration. If the newest release is not in
 the table yet, the install is refused with an explanation: update the integration, or untick
-**Install the kiosk now** and install by hand ([manual](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/nightly/docs/MANUAL.md#24-install)). The bundle is also verified
+**Install the kiosk now** and install by hand ([manual](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/main/docs/MANUAL.md#24-install)). The bundle is also verified
 again on the panel by `ha-kiosk-setup`, with the pinned size. The settings written to the panel
 are the bundle's own `kiosk.env.example` with your URL, token and MQTT values applied, so every
 default (including `WEATHER_FX`) is the one the release ships.
@@ -233,7 +233,7 @@ Merges settings into the panel's `kiosk.env`, atomically, and keeps comments and
 
 | Field | Description |
 |---|---|
-| `values` | Mapping `KEY: value` of settings to set. Booleans are written as `1`/`0`. Names must be settings `ha-kiosk-setup` knows ([manual, section 7](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/nightly/docs/MANUAL.md#7-configuration-reference)); values follow the [character rules](#installation-parameters). |
+| `values` | Mapping `KEY: value` of settings to set. Booleans are written as `1`/`0`. Names must be settings `ha-kiosk-setup` knows ([manual, section 7](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/main/docs/MANUAL.md#7-configuration-reference)); values follow the [character rules](#installation-parameters). |
 | `delete` | List of setting names to remove. |
 | `restart` | Restart `ha-kiosk.service` afterwards (default off). The display service is restarted by the number entities, not here. |
 
@@ -536,7 +536,7 @@ data:
 Brilliant Control panels (single-gang, no physical slider) running Brilliant OS **v26.10.21.1**
 (Yocto kirkstone, kernel 5.15) with this project's kiosk installed. Other Brilliant models and
 firmware versions may work but are untested; see the
-[manual's troubleshooting section](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/nightly/docs/MANUAL.md#9-troubleshooting). Panels are reached over the network, so no extra
+[manual's troubleshooting section](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/main/docs/MANUAL.md#9-troubleshooting). Panels are reached over the network, so no extra
 hardware or adapter is needed.
 
 ## Supported functions
@@ -583,7 +583,7 @@ hardware or adapter is needed.
     PATH), which rebuilds the running copy from the saved one
     (`/var/lib/ha-kiosk/config/kiosk.env`) and so drops the running values.
 * **An install is refused with "not in this integration's list of verified releases".** Update the
-  integration, or install by hand ([manual, section 8](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/nightly/docs/MANUAL.md#8-maintenance)).
+  integration, or install by hand ([manual, section 8](https://github.com/MikeI-Code/brilliant-ha-kiosk/blob/main/docs/MANUAL.md#8-maintenance)).
 * **"is a nightly build".** Set the panel's **Release channel** to Nightly first.
 * **"Install management is off for this panel".** Turn on **Manage installs** in the panel's
   options.
